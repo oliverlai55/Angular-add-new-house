@@ -6,18 +6,18 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="angular.min.js"></script>
-	 	<script src="houses.js"></script>
-		<script src="controller.js"></script>
+	 	<script type="text/javascript" src="houses.js"></script>
+		<script type="text/javascript" src="controller.js"></script>
 
 
 </head>
-<body ng-controller="housesListCtrl">
+<body ng-controller="editController">
 	<div class="container">
-    <div class="view-list" ng-show="view === list">
+    <div class="view-list">
     	<h1>My Dream Houses</h1>
       <div class="row">
         <div class="col-sm-5">
-          <button class="btn btn-primary btn-lg" ng-click="addHouse()"ng-disabled="!enableAdd()">Add New House</button>
+          <button class="btn btn-primary btn-lg" ng-click="changeView('add')">Add New House</button>
         </div>  
       </div>
 
@@ -31,8 +31,8 @@
         <div ng-repeat="house in houses">	
           <span class="col-md-4">{{$index + 1}}: {{house.name}}</span>
             <div class="button col-sm-4 col-sm-offset-4">
-                <button class="btn btn-warning btn-sm col-offset-sm-6" ng-click="">Edit</button>
-                <button class="btn btn-danger btn-sm col-offset-sm-6" ng-click="">Delete</button>
+                <button class="btn btn-warning btn-sm col-offset-sm-6" ng-click="editHouse($index)">Edit</button>
+                <button class="btn btn-danger btn-sm col-offset-sm-6" ng-click="deleteHouse($index)">Delete</button>
             </div>
         </div>
 
@@ -42,7 +42,7 @@
 
 
   <!-- My Dream Houses -->
-  <div class="container">
+  <div class="container" ng-show="view =='add'">
     <div class="title col-sm-12">
       <h2>My Dream Houses</h2>
     </div>
@@ -60,8 +60,8 @@
     <input type="text" class="form-control" ng-model="zestimate" placeholder="Zestimate">
     <input type="text" class="form-control" ng-model="deal" placeholder="How good a deal is it?">
     <input type="text" class="form-control" ng-model="mortgage" placeholder="Estimated Mortgage">
-    <button class="btn btn-success btn-xl" ng-click="">Add</button>
-    <button class="btn btn-warning btn-xl" ng-click="">Cancel</button>
+    <button class="btn btn-success btn-xl" ng-click="addNewHouse()">Add</button>
+    <button class="btn btn-warning btn-xl" ng-click="changeView('list')">Cancel</button>
     </div>  
   </div>
 </body>
