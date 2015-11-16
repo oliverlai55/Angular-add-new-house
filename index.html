@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="houseList">
+<head>
+  <title>House List</title>
+  <link rel="stylesheet" href="bootstrap.min.css">
+
+	<script src="angular.min.js"></script>
+	 	<script src="houses.js"></script>
+		<script src="controller.js"></script>
+
+</head>
+<body ng-controller="housesListCtrl">
+	<div class="container-fluid">
+    	<h1>My Dream Houses</h1>
+
+      <div class="row">
+          <div class="col-sm-5">
+            <button class="btn btn-primary btn-lg" ng-click="addHouse()"ng-disabled="!enableAdd()">Add New House</button>
+          </div>  
+        <div class="col-sm-4 col-sm-offset-3">
+          <input class="form-control input-lg" placeholder="Search" ng-model="searchHouses">
+        </div>
+      </div>
+
+    	<div class="row">
+
+    		<div class="col-sm-4" ng-repeat="house in houses">	
+          <h3>{{house.name}}</h3>
+    		</div>
+    </div>
+</div>
