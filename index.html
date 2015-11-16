@@ -27,13 +27,39 @@
         <h3>List of Houses</h3>
       </div>
 
-      <div class="col-sm-12">
-        <div class="col-sm-12" ng-repeat="house in houses">	
-          <h4>{{$index + 1}}: {{house.name}}</h4>
-          <button class="btn btn-warning btn-sm col-sm-offset-12" ng-click="">Edit</button>
-          <button class="btn btn-danger btn-sm col-sm-offset-12" ng-click="">Add House</button>
+      <div>
+        <div ng-repeat="house in houses">	
+          <span class="col-md-4">{{$index + 1}}: {{house.name}}</span>
+            <div class="button col-sm-4 col-sm-offset-4">
+                <button class="btn btn-warning btn-sm col-offset-sm-6" ng-click="">Edit</button>
+                <button class="btn btn-danger btn-sm col-offset-sm-6" ng-click="">Delete</button>
+            </div>
         </div>
+
       </div>
     </div>
+  </div>
+
+
+  <!-- My Dream Houses -->
+  <div class="container">
+    <div class="title col-sm-12">
+      <h2>My Dream Houses</h2>
+    </div>
+
+    <div class="title2 col-sm-12">
+      <h3>Specify the details of the house:</h3>
+    </div>
+
+    <div class="input-group col-sm-12">
+    <input type="text" class="form-control" ng-model="name" placeholder="House Name">
+    <input type="text" class="form-control" ng-model="photo" placeholder="Photo URL">
+    <input type="text" class="form-control" ng-model="address" placeholder="Address">
+    <input type="text" class="form-control" ng-model="forSale" placeholder="For Sale/NOT for sale">
+    <input type="text" class="form-control" ng-model="price" placeholder="Price">
+    <input type="text" class="form-control" ng-model="zestimate" placeholder="Zestimate">
+    <input type="text" class="form-control" ng-model="deal" placeholder="How good a deal is it?">
+    <input type="text" class="form-control" ng-model="mortgage" placeholder="Estimated Mortgage">
+    </div>  
   </div>
 </body>
