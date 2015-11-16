@@ -3,11 +3,13 @@
 
     function housesListCtrl($scope) {
 
-    	$scope.houses = [];
+    	$scope.houses = houses;
 
     	var index = 0;
 
-    	$scope.addHouse = function(){
+    	
+
+        $scope.addHouse = function(){
     		$scope.houses.push(houses[index++])
     	}
 

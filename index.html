@@ -4,29 +4,36 @@
   <title>House List</title>
   <link rel="stylesheet" href="bootstrap.min.css">
 
-	<script src="angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="angular.min.js"></script>
 	 	<script src="houses.js"></script>
 		<script src="controller.js"></script>
 
+
 </head>
 <body ng-controller="housesListCtrl">
-	<div class="container-fluid">
+	<div class="container">
+    <div class="view-list" ng-show="view === list">
     	<h1>My Dream Houses</h1>
-
       <div class="row">
-          <div class="col-sm-5">
-            <button class="btn btn-primary btn-lg" ng-click="addHouse()"ng-disabled="!enableAdd()">Add New House</button>
-          </div>  
-        <div class="col-sm-4 col-sm-offset-3">
-          <input class="form-control input-lg" placeholder="Search" ng-model="searchHouses">
-        </div>
+        <div class="col-sm-5">
+          <button class="btn btn-primary btn-lg" ng-click="addHouse()"ng-disabled="!enableAdd()">Add New House</button>
+        </div>  
       </div>
 
-    	<div class="row">
+      <!--       <div class="row"> -->
 
-    		<div class="col-sm-4" ng-repeat="house in houses">	
-          <h3>List of Houses</h3>
-          <h3>{{house.name}}</h3>
-    		</div>
+      <div class= "col-sm-12">
+        <h3>List of Houses</h3>
+      </div>
+
+      <div class="col-sm-12">
+        <div class="col-sm-12" ng-repeat="house in houses">	
+          <h4>{{$index + 1}}: {{house.name}}</h4>
+          <button class="btn btn-warning btn-sm col-sm-offset-12" ng-click="">Edit</button>
+          <button class="btn btn-danger btn-sm col-sm-offset-12" ng-click="">Add House</button>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+</body>
