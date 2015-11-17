@@ -41,7 +41,8 @@ function House(name, address, city, state, zip, saleStatus, listPrice, zEstimate
         var deal = $('#deal-quality').val();
         var mortgage = $('#mortgage').val();
         var photo = $('#photo-url').val();
-        $('.new-house').val('');
+        $('.new-house').val(''); 
+        // what does $('.new-house')..etc do? Does it make the val of .new-house empty again?
         $scope.houses.push(new House(name,address,city,state,zip,saleStatus,listPrice,zEstimate,deal,mortgage,photo));
         setView('list');
     }

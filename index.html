@@ -3,13 +3,10 @@
 <head>
   <title>House List</title>
   <link rel="stylesheet" href="bootstrap.min.css">
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="angular.min.js"></script>
-	 	<script type="text/javascript" src="houses.js"></script>
-		<script type="text/javascript" src="controller.js"></script>
-
-
+  <script type="text/javascript" src="houses.js"></script>
+  <script type="text/javascript" src="controller.js"></script>
 </head>
 <body ng-controller="myController">
 	<div class="container-fluid">
@@ -41,42 +38,45 @@
     </div>
 
 
-  <!-- Add House Page -->
-  <div class="container" ng-show="view =='add'">
-    <div class="title col-sm-12">
-      <h2>My Dream Houses</h2>
+    <!-- Add House Page -->
+    <div class="container" ng-show="view =='add'">
+      <div class="title col-sm-12">
+        <h2>My Dream Houses</h2>
+      </div>
+      <div class="title2 col-sm-12">
+        <h3>Specify the details of the house:</h3>
+      </div>
+      <div class="input-group col-sm-12">
+      <input type="text" class="form-control new-house" id="house-name" placeholder="House Name">
+        <input type="text" class="form-control new-house" id="photo-url" placeholder="Photo URL">
+        <input type="text" class="form-control new-house" id="address" placeholder="Address">
+        <input type="text" class="form-control new-house" id="city" placeholder="City">
+        <input type="text" class="form-control new-house" id="state" placeholder="State">
+        <input type="text" class="form-control new-house" id="zip" placeholder="Zip Code">
+        <input type="text" class="form-control new-house" id="sale-status" placeholder="For Sale/NOT for Sale">
+        <input type="text" class="form-control new-house" id="price" placeholder="Price">
+        <input type="text" class="form-control new-house" id="zestimate" placeholder="Zestimate">
+        <input type="text" class="form-control new-house" id="deal-quality" placeholder="Deal Quality">
+        <input type="text" class="form-control new-house" id="mortgage" placeholder="Estimated Mortgage">
+        <button class="btn btn-success btn-xl" ng-click="confirmAddHouse()">Add</button>
+        <button class="btn btn-warning btn-xl" ng-click="listView()">Cancel</button>
+      </div> 
     </div>
-    <div class="title2 col-sm-12">
-      <h3>Specify the details of the house:</h3>
+
+    <!-- Edit Page -->
+    <div ng-show="view == 'edit'">
+      <h3>Edit the name of the house:</h3>
+      <input class="form-control input-lg" id="update-name" placeholder="new name..." type="text">
+      <button class="btn btn-success btn-sm" ng-click="updateName()">Save</button>
+      <button class="btn btn-danger btn-sm" ng-click="listView()">Cancel</button>
     </div>
-    <div class="input-group col-sm-12">
-    <input type="text" class="form-control" ng-model="name" placeholder="House Name">
-    <input type="text" class="form-control" ng-model="photo" placeholder="Photo URL">
-    <input type="text" class="form-control" ng-model="address" placeholder="Address">
-    <input type="text" class="form-control" ng-model="forSale" placeholder="For Sale/NOT for sale">
-    <input type="text" class="form-control" ng-model="price" placeholder="Price">
-    <input type="text" class="form-control" ng-model="zestimate" placeholder="Zestimate">
-    <input type="text" class="form-control" ng-model="deal" placeholder="How good a deal is it?">
-    <input type="text" class="form-control" ng-model="mortgage" placeholder="Estimated Mortgage">
-    <button class="btn btn-success btn-xl" ng-click="confirmAddHouse()">Add</button>
-    <button class="btn btn-warning btn-xl" ng-click="listView()">Cancel</button>
-    </div> 
-  </div>
 
-  <!-- Edit Page -->
-  <div ng-show="view == 'edit'">
-        <h3>Edit the name of the house:</h3>
-        <input class="form-control input-lg" id="update-name" placeholder="new name..." type="text">
-        <button class="btn btn-success btn-sm" ng-click="updateName()">Save</button>
-        <button class="btn btn-danger btn-sm" ng-click="listView()">Cancel</button>
-  </div>
-
-  <!--Delete Page  -->
-  <div ng-show="view == 'delete'">
+    <!--Delete Page  -->
+    <div ng-show="view == 'delete'">
       <h3> Confirm Delete</h3>
       <p><img src="{{url}}" width="300px" height="200px"></p>
       <p> Are you sure you want to delete this house: {{name}}? </p>
       <button class="btn btn-warning btn-sm" ng-click = "view = 'list'"> No </button>
       <button class="btn btn-danger btn-sm" ng-click="removeHouse()"> Yes </button>
-  </div>
-</body>
+    </div>
+  </body>
