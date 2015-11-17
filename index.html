@@ -41,7 +41,7 @@
     </div>
 
 
-  <!-- ADD HOUSE -->
+  <!-- Add House Page -->
   <div class="container" ng-show="view =='add'">
     <div class="title col-sm-12">
       <h2>My Dream Houses</h2>
@@ -64,6 +64,19 @@
   </div>
 
   <!-- Edit Page -->
-  <div class="row" ng-show"view=='edit'">
-    <input type="text" class="form-control" ng-model="name">
+  <div ng-show="view == 'edit'">
+        <h3>Edit the name of the house:</h3>
+        <input class="form-control input-lg" id="update-name" placeholder="new name..." type="text">
+        <button class="btn btn-success btn-sm" ng-click="updateName()">Save</button>
+        <button class="btn btn-danger btn-sm" ng-click="listView()">Cancel</button>
+  </div>
+
+  <!--Delete Page  -->
+  <div ng-show="view == 'delete'">
+      <h3> Confirm Delete</h3>
+      <p><img src="{{url}}" width="300px" height="200px"></p>
+      <p> Are you sure you want to delete this house: {{name}}? </p>
+      <button class="btn btn-warning btn-sm" ng-click = "view = 'list'"> No </button>
+      <button class="btn btn-danger btn-sm" ng-click="removeHouse()"> Yes </button>
+  </div>
 </body>
