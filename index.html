@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="houseList">
+<html ng-app="myApp">
 <head>
   <title>House List</title>
   <link rel="stylesheet" href="bootstrap.min.css">
@@ -11,46 +11,44 @@
 
 
 </head>
-<body ng-controller="editController">
-	<div class="container">
-    <div class="view-list">
-    	<h1>My Dream Houses</h1>
+<body ng-controller="myController">
+	<div class="container-fluid">
+    <h1>My Houses List (with AngularJS)</h1>
+    <div id="wrapper" ng-show="view=='list'">
       <div class="row">
         <div class="col-sm-5">
-          <button class="btn btn-primary btn-lg" ng-click="changeView('add')">Add New House</button>
-        </div>  
-      </div>
-
-      <!--       <div class="row"> -->
-
-      <div class= "col-sm-12">
-        <h3>List of Houses</h3>
-      </div>
-
-      <div>
-        <div ng-repeat="house in houses">	
-          <span class="col-md-4">{{$index + 1}}: {{house.name}}</span>
-            <div class="button col-sm-4 col-sm-offset-4">
-                <button class="btn btn-warning btn-sm col-offset-sm-6" ng-click="editHouse($index)">Edit</button>
-                <button class="btn btn-danger btn-sm col-offset-sm-6" ng-click="deleteHouse($index)">Delete</button>
-            </div>
+          <button class="btn btn-primary btn-lg" ng-click="addHouse()">Add New House</button>
+          
         </div>
-
+        <div class="col-sm-4 col-sm-offset-3">
+          <input class="form-control input-lg" placeholder="search..." type="text" ng-model="searchHouses">
+        </div>
       </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="house in houses | filter:searchHouses">
+          <h3>{{house.name}}</h3>
+          <p><img src="{{house.image}}" width="300px" height="200px"></p>
+          <h4>{{house.address}}, <br/>{{house.city}}, {{house.state}} {{house.zip}}</h4>
+          <h4>{{house.saleStatus}}</h4>
+          <h4>${{house.listPrice}}</h4>
+          <h4>Zestimate&#174: ${{house.zEstimate}}</h4>
+          <h4>{{house.deal}}</h4>
+          <h4>Estimated Mortgage: ${{house.mortgage}}/mo</h4>
+          <button class="btn btn-warning btn-sm" val='{{$index}}' ng-click="editHouse()">Edit</button>
+          <button class="btn btn-danger btn-sm" val='{{$index}}' ng-click="deleteHouse()">Delete</button> 
+        </div> 
+      </div> 
     </div>
-  </div>
 
 
-  <!-- My Dream Houses -->
+  <!-- ADD HOUSE -->
   <div class="container" ng-show="view =='add'">
     <div class="title col-sm-12">
       <h2>My Dream Houses</h2>
     </div>
-
     <div class="title2 col-sm-12">
       <h3>Specify the details of the house:</h3>
     </div>
-
     <div class="input-group col-sm-12">
     <input type="text" class="form-control" ng-model="name" placeholder="House Name">
     <input type="text" class="form-control" ng-model="photo" placeholder="Photo URL">
@@ -60,8 +58,12 @@
     <input type="text" class="form-control" ng-model="zestimate" placeholder="Zestimate">
     <input type="text" class="form-control" ng-model="deal" placeholder="How good a deal is it?">
     <input type="text" class="form-control" ng-model="mortgage" placeholder="Estimated Mortgage">
-    <button class="btn btn-success btn-xl" ng-click="addNewHouse()">Add</button>
-    <button class="btn btn-warning btn-xl" ng-click="changeView('list')">Cancel</button>
-    </div>  
+    <button class="btn btn-success btn-xl" ng-click="confirmAddHouse()">Add</button>
+    <button class="btn btn-warning btn-xl" ng-click="listView()">Cancel</button>
+    </div> 
   </div>
+
+  <!-- Edit Page -->
+  <div class="row" ng-show"view=='edit'">
+    <input type="text" class="form-control" ng-model="name">
 </body>
