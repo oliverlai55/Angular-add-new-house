@@ -20,6 +20,7 @@ function House(name, address, city, state, zip, saleStatus, listPrice, zEstimate
     houseArray.push(new House("The Pool House","1101 Garmon Dr NW","Atlanta","GA","30327","For Sale","2,399,000","2,684,662","Average Deal","8,943","http://photos2.zillowstatic.com/p_h/IS1n6j1pnfqv2b1000000000.jpg"));
     houseArray.push(new House("The Awesome","914 Davis Dr NW","Atlanta","GA","30327","NOT For Sale","-","2,134,055","-","-","http://ak.t1.tiles.virtualearth.net/tiles/cmd/ObliqueHybrid?a=03200231131-48125-20-101&g=4510"));
     houseArray.push(new House("Versailles","5115 Northside Dr NW","Atlanta","GA","30327","For Sale","8,000,000","12,360,014","A crazy deal!! (30% off!)","29,821","http://photos3.zillowstatic.com/p_h/ISx35uo0fixyhb0000000000.jpg"));
+    
     $scope.houses = houseArray;
 
     var index = $scope.houses.length;
@@ -58,6 +59,7 @@ function House(name, address, city, state, zip, saleStatus, listPrice, zEstimate
         return index < houseArray.length;
     }
 
+//please explain this
     $scope.removeHouse = function(){
         setView('list');
         var firstHalf = houseArray.slice(0,index);
@@ -68,7 +70,7 @@ function House(name, address, city, state, zip, saleStatus, listPrice, zEstimate
 
     $scope.editHouse = function(){
         setView('edit');
-        index = houseArray.indexOf(this.house); 
+        index = houseArray.indexOf(this.house); //why do you need to figure out the index?
     }
 
     $scope.updateName = function(){
